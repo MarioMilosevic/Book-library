@@ -1,6 +1,7 @@
 :root {
   --primary-color: #d3cce3;
   --accent-color: #861388;
+  --secondary-color: #5BC0BE;
 }
 * {
   margin: 0;
@@ -71,14 +72,55 @@ body {
   border: none;
 }
 
-.modal{
+.modal {
   width: 70rem;
   height: 50rem;
-  background-color: yellow;
+  background-color: var(--secondary-color);
   position: absolute;
-  top:50%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+}
+
+.modalForm {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items: center;
+}
+
+.formInfo {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title,
+.author,
+.pageNumbers {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formInfo input {
+  width: 70%;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.readInfo{
+  background-color: blue;
+  width: 100%;
+  height: 30%;
 }
 
 footer {

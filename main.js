@@ -1,13 +1,18 @@
 "use strict";
 import { data } from "./constants";
 
-const { newBtn, modal, overlay, books, submitBtn } = data();
+const { newBtn, modal, overlay, books, submitBtn, exitModalBtn } = data();
 
 newBtn.addEventListener("click", function () {
   modal.classList.toggle("hidden");
   overlay.classList.toggle("hidden");
   console.log("newBtn");
 });
+
+exitModalBtn.addEventListener('click', function(){
+    modal.classList.toggle('hidden')
+    overlay.classList.toggle('hidden')
+})
 
 const createBook = () => {
   const book = document.createElement("div");
@@ -23,6 +28,8 @@ const createBook = () => {
     </div>`;
   books.appendChild(book);
 };
+
+
 
 createBook()
 createBook()

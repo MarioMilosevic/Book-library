@@ -1,7 +1,7 @@
 :root {
   --primary-color: #d3cce3;
   --accent-color: #861388;
-  --secondary-color: #5bc0be;
+  --secondary-color:#9C96AC;
 }
 * {
   margin: 0;
@@ -87,6 +87,7 @@ body {
   width: 70rem;
   height: 45rem;
   background-color: var(--secondary-color);
+  color: #fff;
   position: absolute;
   border-radius: 1rem;
   top: 50%;
@@ -152,7 +153,6 @@ body {
 
 .books {
   width: 70%;
-  height: 500px;
   margin: 6rem auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -116,8 +116,8 @@ body {
   cursor: pointer;
 }
 
-.exitModal:hover{
-  background-color: #FFF5FF;
+.exitModal:hover {
+  background-color: #fff5ff;
 }
 
 .hidden {
@@ -140,6 +140,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.title {
+  margin-top: 3.5rem;
 }
 
 .title,

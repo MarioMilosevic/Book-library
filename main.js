@@ -1,18 +1,22 @@
 "use strict";
 import { data } from "./constants";
+import { toggleClass } from "./helpers";
+const { newBtn, modal, overlay, books, submitBtn, exitModalBtn, titleInput } = data();
 
-const { newBtn, modal, overlay, books, submitBtn, exitModalBtn } = data();
+const newExitBtns = [newBtn, exitModalBtn]
 
-newBtn.addEventListener("click", function () {
-  modal.classList.toggle("hidden");
-  overlay.classList.toggle("hidden");
-  console.log("newBtn");
-});
+newExitBtns.forEach(btn => btn.addEventListener('click', function(){
+    toggleClass([modal,overlay], 'hidden')
+    if(!modal.classList.contains('hidden')){
+        titleInput.focus()
+    }
+}))
 
-exitModalBtn.addEventListener('click', function(){
-    modal.classList.toggle('hidden')
-    overlay.classList.toggle('hidden')
+
+submitBtn.addEventListener('click', function(){
 })
+
+
 
 const createBook = () => {
   const book = document.createElement("div");

@@ -7,7 +7,7 @@ export function data() {
   const overlay = document.querySelector(".overlay");
   const modal = document.querySelector(".modal");
   const exitModalBtn = document.querySelector('.exitModal')
-
+    const titleInput = document.querySelector('#title')
   return {
     newBtn,
     exitModalBtn,
@@ -15,5 +15,6 @@ export function data() {
     overlay,
     books,
     submitBtn,
+    titleInput
   };
 }

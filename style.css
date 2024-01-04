@@ -1,7 +1,7 @@
 :root {
   --primary-color: #d3cce3;
   --accent-color: #861388;
-  --secondary-color: #5BC0BE;
+  --secondary-color: #5bc0be;
 }
 * {
   margin: 0;
@@ -57,9 +57,15 @@ body {
 
 .newBtn {
   font-size: 2rem;
+  transition: 0.5s;
 }
 
-.newBtn, .submitBtn {
+.newBtn:hover {
+  transform: scale(1.2);
+}
+
+.newBtn,
+.submitBtn {
   padding: 1.2rem 2.4rem;
   border-radius: 2rem;
   color: #fff;
@@ -68,7 +74,7 @@ body {
   border: none;
 }
 
-.submitBtn{
+.submitBtn {
   font-size: 2rem;
 }
 
@@ -79,45 +85,37 @@ body {
   width: 100%;
   height: 100vh;
   filter: blur(0.3rem);
-  /* display: none; */
+
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(3px);
-  z-index: 5;
-} */
-
 .modal {
   width: 70rem;
-  height: 40rem;
+  height: 45rem;
   background-color: var(--secondary-color);
   position: absolute;
   border-radius: 1rem;
-  /* display: none; */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  -webkit-box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.5);
--moz-box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.5);
-box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 0px 18px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 18px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 18px 5px rgba(0, 0, 0, 0.5);
 }
 
+.hidden {
+  transition:all 1s;
+  display: none;
+}
 
 .modalForm {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -147,7 +145,7 @@ box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.5);
   border-radius: 1rem;
 }
 
-.readInfo{
+.readInfo {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -156,13 +154,11 @@ box-shadow: 0px 0px 18px 5px rgba(0,0,0,0.5);
   height: 30%;
 }
 
-.checkBoxDiv{
-padding:1rem;
+.checkBoxDiv {
+  padding: 1rem;
 }
 
-.checkBox {
- 
-}
+
 
 footer {
   display: flex;

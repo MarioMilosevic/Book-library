@@ -154,6 +154,70 @@ body {
   padding: 1rem;
 }
 
+
+.books {
+  border: 1px solid black;
+  width: 70%;
+  height: 500px;
+  margin: 6rem auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
+}
+
+.book {
+  border: 1px solid black;
+  height: 350px;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bookTitle {
+  background-color: yellow;
+  font-size: 2.4rem;
+  margin-top: 3rem;
+}
+
+.bookAuthorName {
+  margin-top: 2rem;
+  font-size: 2.4rem;
+}
+
+.bookNumPages{
+  margin-top: 2rem;
+  font-size: 2.4rem;
+}
+
+.bookButtons{
+  margin-top: 4rem;
+  display: flex;
+  width: 100%;
+  height: 25%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: blue;
+}
+
+.read{
+  width: 40%;
+}
+
+.removeBook{
+width: 35%;
+}
+.read, .removeBook {
+  height: 50%;
+padding: 1rem 2rem;
+border-radius: 1rem;
+font-size: 1.6rem;
+background-color: var(--accent-color);
+color: #fff;
+cursor: pointer;
+}
+
 footer {
   display: flex;
   justify-content: center;

@@ -37,7 +37,7 @@ body {
 }
 
 .content {
-  margin: 20rem auto 0px;
+  margin: 10rem auto 0px;
   height: 20%;
   width: 80%;
   display: flex;
@@ -61,7 +61,7 @@ body {
 }
 
 .newBtn {
-  margin-top: 2rem;
+  margin: 2rem auto;
 }
 
 .newBtn,

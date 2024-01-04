@@ -8,6 +8,8 @@ export function data() {
   const modal = document.querySelector(".modal");
   const exitModalBtn = document.querySelector('.exitModal')
     const titleInput = document.querySelector('#title')
+    const authorInput = document.querySelector('#author')
+    const pageNumInput = document.querySelector('#pageNumbers')
   return {
     newBtn,
     exitModalBtn,
@@ -15,6 +17,8 @@ export function data() {
     overlay,
     books,
     submitBtn,
-    titleInput
+    titleInput,
+    authorInput,
+    pageNumInput
   };
 }

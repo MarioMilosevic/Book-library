@@ -81,7 +81,9 @@ const createBook = (el) => {
   console.log('removeBtn');
   console.log(el.id);
   bookMan.remove(el.id)
-  domUI.removeBook(removeBtn.parentElement.parentElement)
+  console.log(removeBtn.parentElement.parentElement);
+  console.dir(removeBtn.parentElement.parentElement);
+  domUI.removeBook(removeBtn.parentElement.parentElement.parentElement)
   console.log(bookMan.getBooks());
  })
 

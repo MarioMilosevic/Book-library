@@ -22,17 +22,11 @@ export class BookManager {
   }
 
   remove(bookId) {
-    console.log('id koji proslijedim u remove',bookId);
     this.bookArr = this.bookArr.filter(
       (book) => book.id !== bookId
     );
   }
 
-  //   remove(carId) {
-  //     // this.setCustomArr();
-  //     const carIdNumber = Number(carId);
-  //     this.customArr = this.customArr.filter((el) => el.id !== carIdNumber);
-  //   }
 }
 
 export class UI {

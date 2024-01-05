@@ -1,7 +1,7 @@
 "use strict";
 import { data } from "./constants";
 import { toggleClass } from "./helpers";
-import { Book,BookManager,UI } from "./classes";
+import { Book, BookManager, UI } from "./classes";
 const {
   newBtn,
   modal,
@@ -15,7 +15,8 @@ const {
 } = data();
 
 const newExitBtns = [newBtn, exitModalBtn];
-const bookMan = new BookManager()
+const bookMan = new BookManager();
+const domUI = new UI()
 
 newExitBtns.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -27,25 +28,30 @@ newExitBtns.forEach((btn) =>
 );
 
 submitBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  if(titleInput.value !== '' && authorInput.value !== '' && pageNumInput.value !== ''){
-    const book = new Book(titleInput.value, authorInput.value, pageNumInput.value)
-    bookMan.addBook(book)
-    titleInput.value = ''
-    authorInput.value = ''
-    pageNumInput.value = ''
+  e.preventDefault();
+  if (
+    titleInput.value !== "" &&
+    authorInput.value !== "" &&
+    pageNumInput.value !== ""
+  ) {
+    const book = new Book(
+      titleInput.value,
+      authorInput.value,
+      pageNumInput.value
+    );
+    bookMan.add(book);
+    titleInput.value = "";
+    authorInput.value = "";
+    pageNumInput.value = "";
     console.log(book);
     console.log(bookMan.getBooks());
     toggleClass([modal, overlay], "hidden");
-    createBook(book)
+    createBook(book);
   }
-
-
-
 });
 
 const createBook = (el) => {
-  const {title, author, number} = el
+  const { title, author, number } = el;
   console.log(title);
   console.log(author);
   console.log(number);
@@ -61,7 +67,18 @@ const createBook = (el) => {
         <button class="removeBook">Delete </button>
         </div>
     </div>`;
-  books.appendChild(book);
+    domUI.addBookUI(books,book)
+  // books.appendChild(book);
+
+  const removeBtns = document.querySelectorAll(".removeBook");
+
+  removeBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      console.log(book);
+      console.log(el);
+      console.log(btn.parentElement.parentElement);
+      bookMan.remove(el.id);
+      console.log(bookMan.getBooks());
+    });
+  });
 };
-
-

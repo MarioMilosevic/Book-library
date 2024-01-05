@@ -6,7 +6,15 @@ export class Book {
     this.author = author;
     this.number = number;
     this.id = Math.random() * 1000;
-    this.read = read
+    this.read = read;
+  }
+
+  setReadState(value) {
+    this.read = !value;
+  }
+
+  getReadState() {
+    return this.read;
   }
 }
 
@@ -22,21 +30,18 @@ export class BookManager {
   }
 
   remove(bookId) {
-    this.bookArr = this.bookArr.filter(
-      (book) => book.id !== bookId
-    );
+    this.bookArr = this.bookArr.filter((book) => book.id !== bookId);
   }
-
 }
 
 export class UI {
   constructor() {}
 
-  addBook(parent, child){
-    parent.appendChild(child)
+  addBook(parent, child) {
+    parent.appendChild(child);
   }
 
-  removeBook(el){
-    el.remove()
+  removeBook(el) {
+    el.remove();
   }
 }

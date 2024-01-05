@@ -12,12 +12,12 @@ const {
   titleInput,
   authorInput,
   pageNumInput,
-  inputCheckBox
+  inputCheckBox,
 } = data();
 
 const newExitBtns = [newBtn, exitModalBtn];
 const bookMan = new BookManager();
-const domUI = new UI()
+const domUI = new UI();
 
 newExitBtns.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -30,7 +30,6 @@ newExitBtns.forEach((btn) =>
 
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  console.log(inputCheckBox.checked)
   if (
     titleInput.value !== "" &&
     authorInput.value !== "" &&
@@ -47,19 +46,13 @@ submitBtn.addEventListener("click", function (e) {
     titleInput.value = "";
     authorInput.value = "";
     pageNumInput.value = "";
-    console.log('book',book);
-    console.log('bookArr',bookMan.getBooks());
     toggleClass([modal, overlay], "hidden");
     createBook(book);
   }
 });
 
-// <button class="read">${checked === 'on' ? 'Read ✅' : 'Not read ❌'}</button>
-
-
 const createBook = (el) => {
   const { title, author, number, read } = el;
-  console.log(read);
   const book = document.createElement("div");
   book.innerHTML = "";
   book.innerHTML = `<div class="book">
@@ -67,40 +60,22 @@ const createBook = (el) => {
         <p class="bookAuthorName">${author}</p>
         <p class="bookNumPages">${number} pages</p>
         <div class="bookButtons">
-        <button class="read">${read ? 'Read ✅' : 'Not read ❌'}</button>
+        <button class="read">${read ? "Read ✅" : "Not read ❌"}</button>
         <button class="removeBook">Delete</button>
         </div>
     </div>`;
-    domUI.addBook(books,book)
-  // books.appendChild(book);
+  domUI.addBook(books, book);
 
   const removeBtn = book.querySelector(".removeBook");
-  const readBtn = document.querySelector('.read')
+  const readBtn = book.querySelector(".read");
 
- removeBtn.addEventListener('click', function(){
-  console.log('removeBtn');
-  console.log(el.id);
-  bookMan.remove(el.id)
-  console.log(removeBtn.parentElement.parentElement);
-  console.dir(removeBtn.parentElement.parentElement);
-  domUI.removeBook(removeBtn.parentElement.parentElement.parentElement)
-  console.log(bookMan.getBooks());
- })
+  removeBtn.addEventListener("click", function () {
+    bookMan.remove(el.id);
+    domUI.removeBook(removeBtn.parentElement.parentElement.parentElement);
+  });
 
-
-
-  // removeBtns.forEach((btn) => {
-  //   console.log('-----------------------------------------------------');
-  //   btn.addEventListener("click", function (e) {
-  //     console.log('luuuuup-----------------------------------------------------');
-  //     console.log('element',el);
-  //     console.log('event',e);
-  //     // console.log(btn.parentElement.parentElement);
-  //     bookMan.remove(el.id);
-  //     domUI.removeBook(btn.parentElement.parentElement)
-  //     console.log('bookArr posle brisanja',bookMan.getBooks());
-  //   });
-  // });
+  readBtn.addEventListener("click", function () {
+    el.setReadState(el.read);
+    el.read ? readBtn.textContent = 'Read ✅' : readBtn.textContent = 'Not read ❌'
+  });
 };
-
-

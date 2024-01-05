@@ -34,7 +34,7 @@ submitBtn.addEventListener("click", function (e) {
   if (
     titleInput.value !== "" &&
     authorInput.value !== "" &&
-    pageNumInput.value !== ""
+    pageNumInput.value >= 1
   ) {
     const book = new Book(
       titleInput.value,
@@ -74,23 +74,31 @@ const createBook = (el) => {
     domUI.addBook(books,book)
   // books.appendChild(book);
 
-  const removeBtns = document.querySelectorAll(".removeBook");
+  const removeBtn = book.querySelector(".removeBook");
+  const readBtn = document.querySelector('.read')
 
-  removeBtns.forEach((btn) => {
-    console.log('-----------------------------------------------------');
-    btn.addEventListener("click", function (e) {
-      console.log('luuuuup-----------------------------------------------------');
-      console.log('element',el);
-      console.log('event',e);
-      // console.log(btn.parentElement.parentElement);
-      bookMan.remove(el.id);
-      domUI.removeBook(btn.parentElement.parentElement)
-      console.log('bookArr posle brisanja',bookMan.getBooks());
-    });
-  });
+ removeBtn.addEventListener('click', function(){
+  console.log('removeBtn');
+  console.log(el.id);
+  bookMan.remove(el.id)
+  domUI.removeBook(removeBtn.parentElement.parentElement)
+  console.log(bookMan.getBooks());
+ })
+
+
+
+  // removeBtns.forEach((btn) => {
+  //   console.log('-----------------------------------------------------');
+  //   btn.addEventListener("click", function (e) {
+  //     console.log('luuuuup-----------------------------------------------------');
+  //     console.log('element',el);
+  //     console.log('event',e);
+  //     // console.log(btn.parentElement.parentElement);
+  //     bookMan.remove(el.id);
+  //     domUI.removeBook(btn.parentElement.parentElement)
+  //     console.log('bookArr posle brisanja',bookMan.getBooks());
+  //   });
+  // });
 };
 
 
-inputCheckBox.addEventListener('change',function(){
-  console.log(inputCheckBox.value)
-})

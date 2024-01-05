@@ -234,6 +234,9 @@ body {
 .read,
 .removeBook {
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50%;
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -241,6 +244,12 @@ body {
   background-color: var(--accent-color);
   color: #fff;
   cursor: pointer;
+  transition: all 0.5s;
+}
+
+.read:hover,
+.removeBook:hover {
+  transform: translate(5%, -5%);
 }
 
 footer {

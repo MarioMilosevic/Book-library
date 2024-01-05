@@ -1,22 +1,23 @@
-'use strict'
+"use strict";
 
-class Book {
-constructor(title, author, number){
-    this.title = title
-    this.author = author
-    this.number = number
-}
-}
-
-class BookManager {
-constructor(){
-    this.bookCollection = []
+export class Book {
+  constructor(title, author, number) {
+    this.title = title;
+    this.author = author;
+    this.number = number;
+  }
 }
 
-
-
+export class BookManager {
+  constructor() {
+    this.bookCollection = [];
+  }
+  addBook(book) {
+    this.bookCollection.push(book);
+  }
+  getBooks(){
+    return this.bookCollection
+  }
 }
 
-class UI {
-
-}
+export class UI {}

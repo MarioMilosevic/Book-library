@@ -1,6 +1,7 @@
 "use strict";
 import { data } from "./constants";
 import { toggleClass } from "./helpers";
+import { Book,BookManager,UI } from "./classes";
 const {
   newBtn,
   modal,
@@ -14,6 +15,7 @@ const {
 } = data();
 
 const newExitBtns = [newBtn, exitModalBtn];
+const bookMan = new BookManager()
 
 newExitBtns.forEach((btn) =>
   btn.addEventListener("click", function () {
@@ -24,40 +26,42 @@ newExitBtns.forEach((btn) =>
   })
 );
 
-submitBtn.addEventListener("click", function () {
-  const titleInputValue = titleInput.value;
-  const authorInputValue = authorInput.value;
-  const pageNumInputValue = pageNumInput.value;
-  console.log(titleInputValue);
-  console.log(authorInputValue);
-  console.log(pageNumInputValue);
-//   if (
-//     titleInputValue.length >= 1 &&
-//     authorInputValue.length >= 1 &&
-//     pageNumInputValue !== 0
-//   ) {
-//     toggleClass([modal, overlay], "hidden");
-//   } 
+submitBtn.addEventListener("click", function (e) {
+  e.preventDefault()
+  if(titleInput.value !== '' && authorInput.value !== '' && pageNumInput.value !== ''){
+    const book = new Book(titleInput.value, authorInput.value, pageNumInput.value)
+    bookMan.addBook(book)
+    titleInput.value = ''
+    authorInput.value = ''
+    pageNumInput.value = ''
+    console.log(book);
+    console.log(bookMan.getBooks());
+    toggleClass([modal, overlay], "hidden");
+    createBook(book)
+  }
+
+
+
 });
 
-const createBook = () => {
+const createBook = (el) => {
+  const {title, author, number} = el
+  console.log(title);
+  console.log(author);
+  console.log(number);
+  console.log(el);
   const book = document.createElement("div");
   book.innerHTML = "";
   book.innerHTML = `<div class="book">
-        <p class="bookTitle">Lord of the Rings: Two Towers</p>
-        <p class="bookAuthorName">J.R.R. Tolkien</p>
-        <p class="bookNumPages">500</p>
+        <p class="bookTitle">${title}</p>
+        <p class="bookAuthorName">${author}</p>
+        <p class="bookNumPages">${number} pages</p>
         <div class="bookButtons">
-        <button class="read">unRead ✅</button>
+        <button class="read">Read ✅</button>
         <button class="removeBook">Delete </button>
         </div>
     </div>`;
   books.appendChild(book);
 };
 
-createBook();
-createBook();
-createBook();
-createBook();
-createBook();
-createBook();
+

@@ -10,6 +10,7 @@ export function data() {
     const titleInput = document.querySelector('#title')
     const authorInput = document.querySelector('#author')
     const pageNumInput = document.querySelector('#pageNumbers')
+    const inputCheckBox = document.querySelector('.checkBox')
   return {
     newBtn,
     exitModalBtn,
@@ -19,6 +20,7 @@ export function data() {
     submitBtn,
     titleInput,
     authorInput,
-    pageNumInput
+    pageNumInput,
+    inputCheckBox
   };
 }

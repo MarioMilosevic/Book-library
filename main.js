@@ -12,6 +12,7 @@ const {
   titleInput,
   authorInput,
   pageNumInput,
+  inputCheckBox
 } = data();
 
 const newExitBtns = [newBtn, exitModalBtn];
@@ -29,6 +30,7 @@ newExitBtns.forEach((btn) =>
 
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
+  console.log(inputCheckBox.checked)
   if (
     titleInput.value !== "" &&
     authorInput.value !== "" &&
@@ -37,25 +39,27 @@ submitBtn.addEventListener("click", function (e) {
     const book = new Book(
       titleInput.value,
       authorInput.value,
-      pageNumInput.value
+      pageNumInput.value,
+      inputCheckBox.checked
     );
+
     bookMan.add(book);
     titleInput.value = "";
     authorInput.value = "";
     pageNumInput.value = "";
-    console.log(book);
-    console.log(bookMan.getBooks());
+    console.log('book',book);
+    console.log('bookArr',bookMan.getBooks());
     toggleClass([modal, overlay], "hidden");
     createBook(book);
   }
 });
 
+// <button class="read">${checked === 'on' ? 'Read ✅' : 'Not read ❌'}</button>
+
+
 const createBook = (el) => {
-  const { title, author, number } = el;
-  console.log(title);
-  console.log(author);
-  console.log(number);
-  console.log(el);
+  const { title, author, number, read } = el;
+  console.log(read);
   const book = document.createElement("div");
   book.innerHTML = "";
   book.innerHTML = `<div class="book">
@@ -63,22 +67,30 @@ const createBook = (el) => {
         <p class="bookAuthorName">${author}</p>
         <p class="bookNumPages">${number} pages</p>
         <div class="bookButtons">
-        <button class="read">Read ✅</button>
-        <button class="removeBook">Delete </button>
+        <button class="read">${read ? 'Read ✅' : 'Not read ❌'}</button>
+        <button class="removeBook">Delete</button>
         </div>
     </div>`;
-    domUI.addBookUI(books,book)
+    domUI.addBook(books,book)
   // books.appendChild(book);
 
   const removeBtns = document.querySelectorAll(".removeBook");
 
   removeBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      console.log(book);
-      console.log(el);
-      console.log(btn.parentElement.parentElement);
+    console.log('-----------------------------------------------------');
+    btn.addEventListener("click", function (e) {
+      console.log('luuuuup-----------------------------------------------------');
+      console.log('element',el);
+      console.log('event',e);
+      // console.log(btn.parentElement.parentElement);
       bookMan.remove(el.id);
-      console.log(bookMan.getBooks());
+      domUI.removeBook(btn.parentElement.parentElement)
+      console.log('bookArr posle brisanja',bookMan.getBooks());
     });
   });
 };
+
+
+inputCheckBox.addEventListener('change',function(){
+  console.log(inputCheckBox.value)
+})

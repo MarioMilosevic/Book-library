@@ -1,30 +1,30 @@
 "use strict";
 
 export class Book {
-  constructor(title, author, number) {
+  constructor(title, author, number, read) {
     this.title = title;
     this.author = author;
     this.number = number;
     this.id = Math.random() * 1000;
+    this.read = read
   }
 }
 
 export class BookManager {
   constructor() {
-    this.bookCollection = [];
+    this.bookArr = [];
   }
   add(book) {
-    this.bookCollection.push(book);
+    this.bookArr.push(book);
   }
   getBooks() {
-    return this.bookCollection;
+    return this.bookArr;
   }
 
   remove(bookId) {
-    console.log(bookId);
-    const bookIdNumber = Number(bookId);
-    this.bookCollection = this.bookCollection.filter(
-      (book) => book.id !== bookIdNumber
+    console.log('id koji proslijedim u remove',bookId);
+    this.bookArr = this.bookArr.filter(
+      (book) => book.id !== bookId
     );
   }
 
@@ -38,7 +38,11 @@ export class BookManager {
 export class UI {
   constructor() {}
 
-  addBookUI(parent, child){
+  addBook(parent, child){
     parent.appendChild(child)
+  }
+
+  removeBook(el){
+    el.remove()
   }
 }

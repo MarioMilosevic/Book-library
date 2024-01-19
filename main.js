@@ -76,6 +76,12 @@ const createBook = (el) => {
 
   readBtn.addEventListener("click", function () {
     el.setReadState(el.read);
-    el.read ? readBtn.textContent = 'Read ✅' : readBtn.textContent = 'Not read ❌'
+    el.read
+      ? (readBtn.textContent = "Read ✅")
+      : (readBtn.textContent = "Not read ❌");
   });
 };
+
+
+    const mario = crypto.randomUUID()
+    console.log(mario);
